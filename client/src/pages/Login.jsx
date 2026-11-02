@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../constants/urls.js";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/features/auth/authSlice.js";
 
 const INITIAL_FORM = {
   email: "",
@@ -9,6 +11,7 @@ const INITIAL_FORM = {
 };
 
 export const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
@@ -29,7 +32,8 @@ export const Login = () => {
     }
     try {
       // -> server/src/controllers/auth.controller.js login
-      await axios.post(`${BASE_URL}/auth/login`,payload, {withCredentials: true});
+      const response = await axios.post(`${BASE_URL}/auth/login`, payload, { withCredentials: true });
+      dispatch(setUser(response.data.data.user))
       navigate('/home');
     } catch (error) {
       const message =
