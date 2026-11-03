@@ -57,7 +57,7 @@ const Navbar = () => {
     return (
         <header className="sticky top-0 z-20 flex h-14 w-full items-center justify-between bg-blue-600 px-4 shadow-sm md:px-8">
             <Link to="/home" className="text-3xl font-bold text-white">
-                facebook
+                blogbook
             </Link>
 
             <nav className="hidden h-full items-center gap-2 md:flex">
@@ -114,10 +114,10 @@ const Navbar = () => {
                                 </p>
                                 <p className="truncate text-xs text-gray-500">{user?.email}</p>
                             </div>
-                            <button type="button" role="menuitem" onClick={closeMenu} className={menuItemClass}>
+                            <Link to="/profile" type="button" role="menuitem" onClick={closeMenu} className={menuItemClass}>
                                 <UserRound className="size-4" />
                                 Profile
-                            </button>
+                            </Link>
                             {/* Logout request is wired up later */}
                             <button type="button" role="menuitem" onClick={closeMenu} className={menuItemClass}>
                                 <LogOut className="size-4" />

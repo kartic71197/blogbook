@@ -9,6 +9,7 @@ import axios from "axios";
 import { clearUser, setUser } from "./redux/features/auth/authSlice.js";
 import { BASE_URL } from "./constants/urls.js";
 import MainLayout from "./components/layout/MainLayout.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
