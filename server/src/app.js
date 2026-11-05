@@ -1,6 +1,7 @@
 import express from "express";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import poemRoutes from "./routes/poem.routes.js";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import cors from "cors";
@@ -25,6 +26,7 @@ app.get('/api/health', (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/poems", poemRoutes);
 
 app.use(notFound);       // no route matched → 404
 app.use(errorHandler);   // something threw → format the error
