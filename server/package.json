@@ -1,5 +1,5 @@
 {
-  "name": "blogbook-server",
+  "name": "poetsociety-server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

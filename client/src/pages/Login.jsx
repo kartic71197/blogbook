@@ -51,7 +51,7 @@ export const Login = () => {
   }
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 px-4">
-      <h1 className="mb-6 text-4xl font-bold text-blue-600">blogbook</h1>
+      <h1 className="mb-6 text-4xl font-bold text-blue-600">poetsociety</h1>
       <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-md">
         <h2 className="text-center text-xl font-semibold text-gray-800">
           Log in to your account

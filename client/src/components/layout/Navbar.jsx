@@ -57,7 +57,7 @@ const Navbar = () => {
     return (
         <header className="sticky top-0 z-20 flex h-14 w-full items-center justify-between bg-blue-600 px-4 shadow-sm md:px-8">
             <Link to="/home" className="text-3xl font-bold text-white">
-                blogbook
+                poetsociety
             </Link>
 
             <nav className="hidden h-full items-center gap-2 md:flex">
