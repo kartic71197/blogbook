@@ -89,3 +89,34 @@ export async function deletePoem(req, res) {
 
     return res.status(200).json({ status: "ok", message: "Poem deleted successfully !" });
 }
+
+export async function updateVote(req, res) {
+    const { value } = req.body;
+
+    if (![1, -1, 0].includes(value))
+        throw appError("Vote must be 1, -1 or 0 !", 400);
+
+    const poem = await Poem.findById(req.params.id);
+    if (!poem) throw appError("Poem not found !", 404);
+
+    const existing = poem.votes.find((vote) => vote.user.equals(req.user._id));
+
+    if (value === 0) {
+        poem.votes = poem.votes.filter((vote) => !vote.user.equals(req.user._id));
+    } else if (existing) {
+        existing.value = value;
+    } else {
+        poem.votes.push({ user: req.user._id, value });
+    }
+
+    await poem.save();
+
+    const score = poem.votes.reduce((sum, vote) => sum + vote.value, 0);
+
+    return res.status(200).json({
+        status: "ok",
+        message: "Vote updated !",
+        data: { score, myVote: value },
+    });
+}
+

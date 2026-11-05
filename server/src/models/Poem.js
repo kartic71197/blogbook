@@ -20,6 +20,19 @@ const poemSchema = new mongoose.Schema(
             trim: true,
             maxlength: [5000, "Poem cannot exceed 5000 characters"],
         },
+        votes: [{
+            _id:false,
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User",
+                required:true
+            },
+            value:  {
+                type: Number,
+                required:true,
+                enum:[1,-1]
+            }
+        }]
     },
     {
         timestamps: true,
